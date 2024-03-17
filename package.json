@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "format": "prettier --write \"./**/*.{ts,tsx,scss,md,json}\" --config ./.prettierrc",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "prettier": "^2.8.8",
