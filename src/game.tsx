@@ -108,7 +108,6 @@ const Game = () => {
           <div className="full-time-bar">
             <div className="time-bar" style={{ width: 500 * (time / TIME_LIMIT) }} />
           </div>
-          time: {time}
           <div
             className="game-frame"
             style={gameStyle}
