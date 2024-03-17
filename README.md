@@ -6,3 +6,6 @@ yarn
 
 yarn dev
 ```
+
+### Play
+https://pluiee.github.io/fruit-box
