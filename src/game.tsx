@@ -24,7 +24,7 @@ const Game = () => {
   const [isFinished, setIsFinished] = useState(false);
   const [time, setTime] = useState(0);
   const [colorful, setColorful] = useState(true);
-  const [infinite, setInfinite] = useState(true);
+  const [infinite, setInfinite] = useState(false);
   const onMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     setDragState({
       isMouseDown: true,
