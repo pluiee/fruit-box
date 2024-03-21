@@ -5,28 +5,17 @@ export const COL_COUNT = 17;
 export const PADDING = 10;
 export const BACKGROUND_COLOR = '#ffffff';
 export const FRUIT_MONO_COLOR = '#777777';
-// export const FRUIT_COLORS = [
-//   'Tomato',
-//   'Gold',
-//   'RebeccaPurple',
-//   'Chartreuse',
-//   'DeepSkyBlue',
-//   'Coral',
-//   'DarkOrchid',
-//   'LightSeaGreen',
-//   'Sienna'
-// ];
 export const FRUIT_COLORS = [
-  '#CCCCCC', // Light Gray
-  '#87CEEB', // Sky Blue
-  '#90EE90', // Light Green
-  '#FFA07A', // Light Salmon
-  '#F08080', // Light Coral
-  '#778899', // Light Slate Gray
-  '#B0C4DE', // Light Steel Blue
-  '#FFB6C1', // Light Pink
-  '#20B2AA', // Light Sea Green
-  '#FAFAD2' // Light Goldenrod Yellow
+  '#A9A9A9', // Dark Gray
+  '#5F9EA0', // Cadet Blue
+  '#3CB371', // Medium Sea Green
+  '#CD5C5C', // Indian Red
+  '#BC8F8F', // Rosy Brown
+  '#708090', // Slate Gray
+  '#4682B4', // Steel Blue
+  '#FF69B4', // Hot Pink
+  '#008B8B', // Dark Cyan
+  '#FFD700' // Gold
 ];
 export const FRUIT_TEXT_COLOR = '#ffffff';
 export const FRUIT_BORDER_COLOR = '#00000055';

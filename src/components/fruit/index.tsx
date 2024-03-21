@@ -9,7 +9,6 @@ import {
   fruit,
   getDragArea
 } from '../../config';
-import './fruit.css';
 import { useRef, useEffect, useState } from 'react';
 
 interface FruitProps {
@@ -26,9 +25,15 @@ const Fruit = ({ fruit, dragState, colorful, setIsSelected }: FruitProps) => {
     width: FRUIT_SIZE,
     height: FRUIT_SIZE,
     backgroundColor: colorful ? FRUIT_COLORS[fruit.count - 1] : FRUIT_MONO_COLOR,
-    borderColor: isDragged ? FRUIT_BORDER_COLOR : BACKGROUND_COLOR,
+    border: `4px solid ${isDragged ? FRUIT_BORDER_COLOR : BACKGROUND_COLOR}`,
     color: FRUIT_TEXT_COLOR,
-    opacity: fruit.isErased ? 0 : 1
+    opacity: fruit.isErased ? 0 : 1,
+    borderRadius: '50%',
+    display: 'grid',
+    placeItems: 'center',
+    fontWeight: 800,
+    fontSize: 24,
+    transition: '0.1s'
   };
   useEffect(() => {
     if (dragState.isMouseDown === false || !fruitRef.current) {
@@ -52,7 +57,7 @@ const Fruit = ({ fruit, dragState, colorful, setIsSelected }: FruitProps) => {
     }
   }, [dragState]);
   return (
-    <div className="fruit" style={fruitStyle} ref={fruitRef}>
+    <div style={fruitStyle} ref={fruitRef}>
       {fruit.count}
     </div>
   );

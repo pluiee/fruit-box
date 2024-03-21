@@ -107,7 +107,7 @@ const Game = () => {
           <button onClick={() => setIsPlaying(false)}>reset</button>
         </span>
         <span className="options">
-          <label>
+          <label className="label">
             <input
               type="checkbox"
               checked={colorful}
@@ -116,7 +116,7 @@ const Game = () => {
             color
           </label>
           {!isPlaying && (
-            <label>
+            <label className="label">
               <input
                 type="checkbox"
                 checked={!infinite}

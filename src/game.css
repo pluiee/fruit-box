@@ -15,14 +15,16 @@
   gap: 10px;
   align-items: center;
   font-size: 14px;
-  label {
-    display: flex;
-    align-items: center;
-  }
-  .options {
-    display: flex;
-    gap: 8px;
-  }
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.options {
+  display: flex;
+  gap: 8px;
 }
 
 .game-frame{
@@ -38,11 +40,15 @@
 
 .full-time-bar{
   width: 500px;
-  height: 7px;
-  border: 1px solid black;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #f0f0f0;
 }
 
 .time-bar{
-  height: 5px;
-  background: black;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #777777;
+  transition: width 0.5s ease;
 }
