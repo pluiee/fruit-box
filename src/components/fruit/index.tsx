@@ -1,7 +1,8 @@
 import {
   BACKGROUND_COLOR,
   FRUIT_BORDER_COLOR,
-  FRUIT_COLOR,
+  FRUIT_COLORS,
+  FRUIT_MONO_COLOR,
   FRUIT_SIZE,
   FRUIT_TEXT_COLOR,
   drag,
@@ -14,16 +15,17 @@ import { useRef, useEffect, useState } from 'react';
 interface FruitProps {
   fruit: fruit;
   dragState: drag;
+  colorful: boolean;
   setIsSelected: React.Dispatch<React.SetStateAction<boolean[]>>;
 }
 
-const Fruit = ({ fruit, dragState, setIsSelected }: FruitProps) => {
+const Fruit = ({ fruit, dragState, colorful, setIsSelected }: FruitProps) => {
   const [isDragged, setIsDragged] = useState(false);
   const fruitRef = useRef<HTMLDivElement>(null);
   const fruitStyle = {
     width: FRUIT_SIZE,
     height: FRUIT_SIZE,
-    backgroundColor: FRUIT_COLOR,
+    backgroundColor: colorful ? FRUIT_COLORS[fruit.count - 1] : FRUIT_MONO_COLOR,
     borderColor: isDragged ? FRUIT_BORDER_COLOR : BACKGROUND_COLOR,
     color: FRUIT_TEXT_COLOR,
     opacity: fruit.isErased ? 0 : 1

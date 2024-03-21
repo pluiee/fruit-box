@@ -23,6 +23,8 @@ const Game = () => {
   const [isSelected, setIsSelected] = useState<boolean[]>(initialIsSelected);
   const [isFinished, setIsFinished] = useState(false);
   const [time, setTime] = useState(0);
+  const [colorful, setColorful] = useState(true);
+  const [infinite, setInfinite] = useState(true);
   const onMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     setDragState({
       isMouseDown: true,
@@ -87,7 +89,7 @@ const Game = () => {
   }, [isPlaying]);
 
   useEffect(() => {
-    if (time === TIME_LIMIT + 1) setIsFinished(true);
+    if (time === TIME_LIMIT + 1 && !infinite) setIsFinished(true);
   }, [time]);
 
   useEffect(() => {
@@ -98,16 +100,40 @@ const Game = () => {
 
   return (
     <div className="screen" onMouseUp={onMouseUp}>
-      score: {score}
-      <span>
-        <button onClick={() => setIsPlaying(true)}>start</button>
-        <button onClick={() => setIsPlaying(false)}>reset</button>
-      </span>
+      <div className="score">score: {score}</div>
+      <div className="settings">
+        <span>
+          <button onClick={() => setIsPlaying(true)}>start</button>
+          <button onClick={() => setIsPlaying(false)}>reset</button>
+        </span>
+        <span className="options">
+          <label>
+            <input
+              type="checkbox"
+              checked={colorful}
+              onChange={(e) => setColorful(e.target.checked)}
+            />
+            color
+          </label>
+          {!isPlaying && (
+            <label>
+              <input
+                type="checkbox"
+                checked={!infinite}
+                onChange={(e) => setInfinite(!e.target.checked)}
+              />
+              clock
+            </label>
+          )}
+        </span>
+      </div>
       {isPlaying && (
         <>
-          <div className="full-time-bar">
-            <div className="time-bar" style={{ width: 500 * (time / TIME_LIMIT) }} />
-          </div>
+          {!infinite && (
+            <div className="full-time-bar">
+              <div className="time-bar" style={{ width: 500 * (time / TIME_LIMIT) }} />
+            </div>
+          )}
           <div
             className="game-frame"
             style={gameStyle}
@@ -118,6 +144,7 @@ const Game = () => {
               <Fruit
                 key={fruit.id}
                 fruit={fruit}
+                colorful={colorful}
                 dragState={dragState}
                 setIsSelected={setIsSelected}
               />

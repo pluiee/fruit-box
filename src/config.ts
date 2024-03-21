@@ -4,9 +4,32 @@ export const ROW_COUNT = 10;
 export const COL_COUNT = 17;
 export const PADDING = 10;
 export const BACKGROUND_COLOR = '#ffffff';
-export const FRUIT_COLOR = '#777777';
+export const FRUIT_MONO_COLOR = '#777777';
+// export const FRUIT_COLORS = [
+//   'Tomato',
+//   'Gold',
+//   'RebeccaPurple',
+//   'Chartreuse',
+//   'DeepSkyBlue',
+//   'Coral',
+//   'DarkOrchid',
+//   'LightSeaGreen',
+//   'Sienna'
+// ];
+export const FRUIT_COLORS = [
+  '#CCCCCC', // Light Gray
+  '#87CEEB', // Sky Blue
+  '#90EE90', // Light Green
+  '#FFA07A', // Light Salmon
+  '#F08080', // Light Coral
+  '#778899', // Light Slate Gray
+  '#B0C4DE', // Light Steel Blue
+  '#FFB6C1', // Light Pink
+  '#20B2AA', // Light Sea Green
+  '#FAFAD2' // Light Goldenrod Yellow
+];
 export const FRUIT_TEXT_COLOR = '#ffffff';
-export const FRUIT_BORDER_COLOR = '#000000';
+export const FRUIT_BORDER_COLOR = '#00000055';
 export const TARGET_SUM = 10;
 export const TIME_LIMIT = 100;
 
@@ -67,7 +90,3 @@ export const getDragArea = (dragState: drag) => {
     width: Math.abs(dragState.currX - dragState.startX)
   };
 };
-
-// export const getDraggedFruits = (fruitState: fruit[], dragState: drag) => {
-
-// }
