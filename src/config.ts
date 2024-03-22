@@ -35,14 +35,21 @@ export interface fruit {
   isErased: boolean;
 }
 
-export const getRandomFruitList = (): fruit[] => {
+const random = (seed: number) => {
+  const x = Math.sin(++seed) * 10000;
+  return x - Math.floor(x);
+};
+
+export const getRandomFruitList = (seed: number): fruit[] => {
   const fruitList: fruit[] = [];
+  let x = random(seed);
   for (let i = 0; i < ROW_COUNT * COL_COUNT; i++) {
     fruitList.push({
       id: i,
-      count: 1 + Math.floor(Math.random() * 9),
+      count: 1 + Math.floor(x * 9),
       isErased: false
     });
+    x = random(x);
   }
   return fruitList;
 };

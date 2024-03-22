@@ -9,7 +9,8 @@ import {
   getDragArea,
   getInitialIsSelected,
   getRandomFruitList,
-  initialDrag
+  initialDrag,
+  fruit
 } from './config';
 import './game.css';
 import { useState, MouseEvent, useMemo, useEffect } from 'react';
@@ -17,7 +18,7 @@ import { useState, MouseEvent, useMemo, useEffect } from 'react';
 const Game = () => {
   const initialIsSelected = getInitialIsSelected();
   const [score, setScore] = useState(0);
-  const [fruitState, setFruitState] = useState(getRandomFruitList());
+  const [fruitState, setFruitState] = useState<fruit[]>([]);
   const [dragState, setDragState] = useState<drag>(initialDrag);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSelected, setIsSelected] = useState<boolean[]>(initialIsSelected);
@@ -25,6 +26,8 @@ const Game = () => {
   const [time, setTime] = useState(0);
   const [colorful, setColorful] = useState(true);
   const [infinite, setInfinite] = useState(false);
+  const [seed, setSeed] = useState(0);
+  const [seeded, setSeeded] = useState(false);
   const onMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     setDragState({
       isMouseDown: true,
@@ -74,7 +77,7 @@ const Game = () => {
 
   const reset = () => {
     setScore(0);
-    setFruitState(getRandomFruitList());
+    setFruitState(getRandomFruitList(seeded ? seed : Math.random()));
     setDragState(initialDrag);
     setIsSelected(initialIsSelected);
     setTime(0);
@@ -116,16 +119,38 @@ const Game = () => {
             color
           </label>
           {!isPlaying && (
-            <label className="label">
-              <input
-                type="checkbox"
-                checked={!infinite}
-                onChange={(e) => setInfinite(!e.target.checked)}
-              />
-              clock
-            </label>
+            <>
+              <label className="label">
+                <input
+                  type="checkbox"
+                  checked={!infinite}
+                  onChange={(e) => setInfinite(!e.target.checked)}
+                />
+                clock
+              </label>
+              <label className="label">
+                <input
+                  type="checkbox"
+                  checked={seeded}
+                  onChange={(e) => setSeeded(e.target.checked)}
+                />
+                seeded
+              </label>
+            </>
           )}
         </span>
+        {!isPlaying && (
+          <label>
+            <input
+              type="number"
+              step="0.01"
+              className="seed"
+              value={seed}
+              onChange={(e) => setSeed(+e.target.value)}
+            />
+            seed
+          </label>
+        )}
       </div>
       {isPlaying && (
         <>

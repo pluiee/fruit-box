@@ -9,6 +9,11 @@
   font-size: 32px;
 }
 
+.seed{
+  margin-right: 8px;
+  width: 80px;
+}
+
 .settings{
   display: flex;
   flex-flow: column;
