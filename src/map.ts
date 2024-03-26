@@ -43,7 +43,7 @@ const generateTargetSumList = (len: number): number[] => {
 
 const createSolvableMap = (): number[] => {
   const map = initMap();
-  let prefillCnt = 30;
+  let prefillCnt = 20;
   while (prefillCnt--) {
     // eslint-disable-next-line no-constant-condition
     while (true) {
@@ -93,7 +93,10 @@ const createSolvableMap = (): number[] => {
 
 export const getSolvableFruitList = (): fruit[] => {
   const fruitList: fruit[] = [];
-  const countList = createSolvableMap();
+  let countList = createSolvableMap();
+  while (countList.filter((x) => x === 0).length) {
+    countList = createSolvableMap();
+  }
   for (let i = 0; i < ROW_COUNT * COL_COUNT; i++) {
     fruitList.push({
       id: i,
