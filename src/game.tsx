@@ -8,12 +8,12 @@ import {
   gameStyle,
   getDragArea,
   getInitialIsSelected,
-  getRandomFruitList,
   initialDrag,
   fruit
 } from './config';
 import './game.css';
 import { useState, MouseEvent, useMemo, useEffect } from 'react';
+import { getRandomFruitList, getSolvableFruitList } from './map';
 
 const Game = () => {
   const initialIsSelected = getInitialIsSelected();
@@ -28,6 +28,7 @@ const Game = () => {
   const [infinite, setInfinite] = useState(false);
   const [seed, setSeed] = useState(0);
   const [seeded, setSeeded] = useState(false);
+  const [solvable, setSolvable] = useState(true);
   const onMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     setDragState({
       isMouseDown: true,
@@ -77,7 +78,9 @@ const Game = () => {
 
   const reset = () => {
     setScore(0);
-    setFruitState(getRandomFruitList(seeded ? seed : Math.random()));
+    setFruitState(
+      solvable ? getSolvableFruitList() : getRandomFruitList(seeded ? seed : Math.random())
+    );
     setDragState(initialDrag);
     setIsSelected(initialIsSelected);
     setTime(0);
@@ -131,7 +134,16 @@ const Game = () => {
               <label className="label">
                 <input
                   type="checkbox"
+                  checked={solvable}
+                  onChange={(e) => setSolvable(e.target.checked)}
+                />
+                solvable
+              </label>
+              <label className="label">
+                <input
+                  type="checkbox"
                   checked={seeded}
+                  disabled={solvable}
                   onChange={(e) => setSeeded(e.target.checked)}
                 />
                 seeded
